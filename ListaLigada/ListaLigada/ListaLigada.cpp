@@ -33,7 +33,7 @@ void menu()
 {
 	int op = 0;
 	while (op != 7) {
-		system("cls"); // somente no windows
+		system("clear"); // somente no windows
 		cout << "Menu Lista Ligada";
 		cout << endl << endl;
 		cout << "1 - Inicializar Lista \n";
@@ -67,7 +67,8 @@ void menu()
 		default:
 			break;
 		}
-		system("pause");
+		cout << "\nPressione ENTER para continuar\n";
+		getchar();
 	}
 }
 
@@ -84,6 +85,8 @@ void inicializar()
 
 	primeiro = NULL;
 	cout << "Lista inicializada \n";
+	cout << "\nPressione ENTER para continuar\n";
+	getchar();
 
 }
 
@@ -103,6 +106,8 @@ void exibirElementos()
 {
 	if (primeiro == NULL) {
 		cout << "Lista vazia \n";
+		cout << "\nPressione ENTER para continuar\n";
+		getchar();
 		return;
 	}
 	else {
@@ -112,6 +117,8 @@ void exibirElementos()
 			cout << aux->valor << endl;
 			aux = aux->prox;
 		}
+		cout << "\nPressione ENTER para continuar\n";
+		getchar();
 	}
 }
 
@@ -210,9 +217,13 @@ void inserirElemento()
     	    }
     	}
     	cout <<"Valor inserido \n";
+    	cout << "\nPressione ENTER para continuar\n";
+    	getchar();
     }
     else{
         cout << "Esse valor ja esta na lista";
+        cout << "\nPressione ENTER para continuar\n";
+        getchar();
     }
     
 }
@@ -236,4 +247,3 @@ NO* posicaoElemento(int numero)  {
           }  
           return aux;  
 }
-
