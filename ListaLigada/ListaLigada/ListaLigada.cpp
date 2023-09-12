@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdio>
 using namespace std;
 
 // definicao de tipo
@@ -8,6 +9,8 @@ struct NO {
 };
 
 NO* primeiro = NULL;
+
+
 
 // headers
 void menu();
@@ -43,6 +46,7 @@ void menu()
 
 		cout << "Opcao: ";
 		cin >> op;
+		cout << "Opcao "<<op<<endl;
 
 		switch (op)
 		{
@@ -63,14 +67,13 @@ void menu()
 		default:
 			break;
 		}
-
-		system("pause"); // somente no windows
+		system("pause");
 	}
 }
 
 void inicializar()
 {
-	// se a lista já possuir elementos
+	// se a lista jÃ¡ possuir elementos
 // libera a memoria ocupada
 	NO* aux = primeiro;
 	while (aux != NULL) {
@@ -114,40 +117,123 @@ void exibirElementos()
 
 void inserirElemento()
 {
+    int ValNum;
+    cout << "Digite o elemento: ";
+    cin >> ValNum;
+    bool Inseriu=false;
 	// aloca memoria dinamicamente para o novo elemento
-	NO* novo = (NO*)malloc(sizeof(NO));
-	if (novo == NULL)
-	{
-		return;
-	}
-
-	cout << "Digite o elemento: ";
-	cin >> novo->valor;
-	novo->prox = NULL;
-
-	if (primeiro == NULL)
-	{
-		primeiro = novo;
-	}
-	else
-	{
-		// procura o final da lista
-		NO* aux = primeiro;
-		while (aux->prox != NULL) {
-			aux = aux->prox;
-		}
-		aux->prox = novo;
-	}
+    if(posicaoElemento(ValNum)==NULL){
+        
+    	NO* novo = (NO*)malloc(sizeof(NO));
+    	NO* ultimo;
+    	bool PrimeiraVez=true;
+    	/*if (novo == NULL)
+    	{
+    		return;
+    	}*/
+    	novo->valor=ValNum;
+    	novo->prox = NULL;
+    	NO* ValorAtual=primeiro;
+    	NO* Anterior;
+    
+    	if (primeiro == NULL)
+    	{
+    		primeiro = novo;
+    		ultimo = primeiro;
+    	}
+    	else
+    	{
+    	    if(novo->valor<ultimo->valor){
+    	        ultimo->prox=novo;
+    	        ultimo=novo;
+    	    }
+    	    else{
+    	        while(ValorAtual!=NULL){
+    	            if(PrimeiraVez){
+    	                if(novo->valor>ValorAtual->valor){ //comparacao com o primeiro valor
+    	                    novo->prox=ValorAtual;
+    	                    primeiro=novo;
+    	                    
+    	                    //definir quem eh o ultimo valor
+    	                    ValorAtual=primeiro;
+    	                    while(ValorAtual!=NULL){
+    	                        if(ValorAtual->prox==NULL){
+    	                            ultimo=ValorAtual;
+    	                        }
+    	                        ValorAtual=ValorAtual->prox;
+    	                    }
+    	                    ValorAtual=primeiro;
+    	                    Inseriu=true;
+    	                }
+    	                else{
+    	                    //aqui o primeiro eh maior, ent tem q guardar ele
+    	                    if(ValorAtual->prox==NULL){
+    	                        //caso a lista tenha apenas 2 itens
+    	                        ValorAtual->prox=novo;
+    	                        ultimo=novo;
+    	                        Inseriu=true;
+    	                    }
+    	                    Anterior=ValorAtual;
+    	                }
+    	                PrimeiraVez=false;
+    	            }
+    	            else{
+    	                //do segundo em diante
+    	                if(novo->valor>ValorAtual->valor){
+    	                    Anterior->prox=novo;
+    	                    novo->prox=ValorAtual;
+    	                    ValorAtual=primeiro;
+    	                    while(ValorAtual!=NULL){
+    	                        if(ValorAtual->prox==NULL){
+    	                            ultimo=ValorAtual;
+    	                        }
+    	                        ValorAtual=ValorAtual->prox;
+    	                    }
+    	                    ValorAtual=primeiro;
+    	                    Inseriu=true;
+    	                }
+    	                else{
+    	                    if(ValorAtual->prox==NULL){
+    	                        //caso a lista tenha apenas 2 itens
+    	                        ValorAtual->prox=novo;
+    	                        ultimo=novo;
+    	                        Inseriu=true;
+    	                    }
+    	                    Anterior=ValorAtual;
+    	                }
+    	            }
+    	            ValorAtual=ValorAtual->prox;
+    	            if(Inseriu){
+    	                break;
+    	            }
+    	        }
+    	    }
+    	}
+    	cout <<"Valor inserido \n";
+    }
+    else{
+        cout << "Esse valor ja esta na lista";
+    }
+    
 }
 
-void excluirElemento()
-{
+void excluirElemento(){
 
 }
 
-void buscarElemento()
-{
+void buscarElemento(){
 
 }
 
+NO* posicaoElemento(int numero)  {  
+          NO* aux = primeiro;  
+          while (aux != NULL) {  
+                  if (aux->valor == numero)  
+                  {  
+                          break;  
+                  }  
+                  aux = aux->prox;  
+          }  
+          return aux;  
+}
 
