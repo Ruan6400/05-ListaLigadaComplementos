@@ -9,7 +9,7 @@ struct NO {
 };
 
 NO* primeiro = NULL;
-
+NO* ultimo = NULL;
 
 
 // headers
@@ -132,7 +132,6 @@ void inserirElemento()
     if(posicaoElemento(ValNum)==NULL){
         
     	NO* novo = (NO*)malloc(sizeof(NO));
-    	NO* ultimo;
     	bool PrimeiraVez=true;
     	/*if (novo == NULL)
     	{
