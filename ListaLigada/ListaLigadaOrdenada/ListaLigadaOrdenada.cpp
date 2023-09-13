@@ -160,10 +160,14 @@
                            if(novo->valor>ValorAtual->valor){
                                novo->prox=ValorAtual;
                                primeiro=novo;
+                               Inseriu=true;
+                               cout << "\nfoi\n";
                            }
                            else{
                                if(ValorAtual->prox==NULL){
-                                  ValorAtual->prox=novo;
+                                   ValorAtual->prox=novo;
+                                   Inseriu=true;
+                                   cout << "\nfoi\n";
                                }
                                Anterior=ValorAtual;
                            }
@@ -171,15 +175,21 @@
                        }
                        else{
                            if(novo->valor>ValorAtual->valor){
-                               novo->prox=ValorAtual;
                                Anterior->prox=novo;
+                               novo->prox=ValorAtual;
+                               Inseriu=true;
+                                cout << "\nfoi\n";
                            }
                            else{
-                               if(ValorAtual->prox==NULL){
+                                 if(ValorAtual->prox==NULL){
                                    ValorAtual->prox=novo;
+                                   Inseriu=true;
+                                   cout << "\nfoi\n";
                                }
-                               Anterior=ValorAtual;
                            }
+                       }
+                       if(Inseriu){
+                           break;
                        }
                        ValorAtual=ValorAtual->prox;
                    }
