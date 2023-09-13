@@ -207,10 +207,6 @@
             getchar();    
         }    
   
-    }    
-  
-    void excluirElemento(){
-        int NumExc;
     }
     
     void Apagador(NO* ValorInicial,int NumExc){
@@ -223,6 +219,8 @@
                 if(ValorAtual->valor==NumExc){
                     primeiro=ValorAtual->prox;
                     cout<<"\nValor excluido\n";
+                    quantidade--;
+                    Soma = Soma - ValorAtual->valor;
                     free(ValorAtual);
                     apagou= true;
                 }
@@ -238,6 +236,8 @@
                 if(ValorAtual->valor==NumExc){
                     Anterior->prox=ValorAtual->prox;
                     cout<<"\nValor excluido\n";
+                    quantidade--;
+                    Soma = Soma - ValorAtual->valor;
                     free(ValorAtual);
                     apagou=true;
                 }
@@ -255,6 +255,26 @@
         }
         getchar();
     }
+  
+    void excluirElemento(){
+        int NumExc;
+        if(quantidade<=0){
+            cout<<"Lista Vazia.";
+            getchar();
+        }
+        else{
+            cout<<"Digite o numero a ser excluido:\n";
+            cin >> NumExc;
+            if(quantidade>=3){
+                
+            }
+            else{
+                Apagador(primeiro,NumExc);
+            }
+        }
+    }
+    
+    
   
     void buscarElemento(){    
   
