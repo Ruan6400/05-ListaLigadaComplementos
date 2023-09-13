@@ -190,10 +190,10 @@
                   Soma = Soma + novo->valor;   
                   Media = Soma/quantidade; 
                   MediaInt = static_cast<int>(Media); 
-                  if(quantidade>=3){  
+                   
                       ValorAtual=primeiro;  
                       while(ValorAtual!=NULL){  
-                          if(ValorAtual->valor>MediaInt){  
+                          if(ValorAtual->valor>=MediaInt){  
                               MeioDaLista=Anterior;  
                               break;  
                           }  
@@ -202,7 +202,7 @@
                           }  
                           ValorAtual=ValorAtual->prox;  
                       }  
-                  }  
+                    
                   cout << "\nPressione ENTER para continuar\n";      
                   getchar();      
           }      
