@@ -72,15 +72,6 @@
            }   
    }   
   
-   void DefinirUltimo(){  
-       NO* ValorAtual = primeiro;  
-       while(ValorAtual!=NULL){  
-           if(ValorAtual->prox==NULL){  
-               ultimo = ValorAtual;  
-           }  
-           ValorAtual=ValorAtual->prox;  
-       }  
-   }  
   
    void inicializar()   
    {   
