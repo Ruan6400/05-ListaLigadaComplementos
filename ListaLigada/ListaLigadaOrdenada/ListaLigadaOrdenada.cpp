@@ -9,7 +9,9 @@
    };   
   
    NO* primeiro = NULL;   
-   NO* ultimo = NULL;   
+   NO* ultimo = NULL;
+   int quantidade = 0;
+   int Soma = 0;
   
   
    // headers   
@@ -46,7 +48,6 @@
   
                    cout << "Opcao: ";   
                    cin >> op;   
-                   cout << "Opcao "<<op<<endl;   
   
                    switch (op)   
                    {   
@@ -67,7 +68,6 @@
                    default:   
                            break;   
                    }   
-                   cout << "\nPressione ENTER para continuar\n";   
                    getchar();   
            }   
    }   
@@ -152,13 +152,11 @@
                                novo->prox=ValorAtual;
                                primeiro=novo;
                                Inseriu=true;
-                               cout << "\nfoi\n";
                            }
                            else{
                                if(ValorAtual->prox==NULL){
                                    ValorAtual->prox=novo;
                                    Inseriu=true;
-                                   cout << "\nfoi\n";
                                }
                                Anterior=ValorAtual;
                            }
@@ -169,13 +167,11 @@
                                Anterior->prox=novo;
                                novo->prox=ValorAtual;
                                Inseriu=true;
-                                cout << "\nfoi\n";
                            }
                            else{
                                  if(ValorAtual->prox==NULL){
                                    ValorAtual->prox=novo;
                                    Inseriu=true;
-                                   cout << "\nfoi\n";
                                }
                            }
                        }
@@ -185,7 +181,9 @@
                        ValorAtual=ValorAtual->prox;
                    }
                }
-               cout <<"Valor inserido \n";   
+               cout <<"Valor inserido \n"; 
+               quantidade++;
+               Soma+=novo->valor;
                cout << "\nPressione ENTER para continuar\n";   
                getchar();   
        }   
