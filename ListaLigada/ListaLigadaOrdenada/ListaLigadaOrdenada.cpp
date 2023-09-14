@@ -145,10 +145,10 @@
   
                        NO* novo = (NO*)malloc(sizeof(NO));           
                        bool PrimeiraVez=true;           
-                       /*if (novo == NULL)           
+                       if (novo == NULL)           
                        {           
                                return;           
-                       }*/           
+                       }           
                        novo->valor=ValNum;           
                        novo->prox = NULL;           
                        NO* ValorAtual=primeiro;           
