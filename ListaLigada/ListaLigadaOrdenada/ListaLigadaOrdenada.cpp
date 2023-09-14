@@ -1,3 +1,4 @@
+
 #include <iostream>        
         #include <cstdio>        
         using namespace std;        
@@ -277,8 +278,8 @@
             getchar();  
         }  
   
-        NO* posicaoElemento(int numero)  {          
-                  NO* aux = primeiro;          
+        NO* posicaoElemento(int numero/*,NO* ValorInicial*/)  {          
+                  NO* aux = primeiro; //mudar valor de aux para o argumento          
                   while (aux != NULL) {          
                           if (aux->valor == numero)          
                           {          
@@ -347,4 +348,4 @@
                 ValorAtual=ValorAtual->prox;    
             }    
             getchar();    
-        } 
+        }
