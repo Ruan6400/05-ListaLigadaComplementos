@@ -22,7 +22,8 @@
         void exibirElementos();        
         void inserirElemento();        
         void excluirElemento();        
-        void buscarElemento();  
+        void buscarElemento();
+        void Apagador(NO* ValorInicial,int NumExc, bool Tanomeio);
         void MostrarDados();  
         NO* posicaoElemento(int numero);        
         //--------------------------        
@@ -88,7 +89,9 @@
                         free(paraExcluir);        
                 }        
   
-                primeiro = NULL;        
+                primeiro = NULL;
+                quantidade = 0;
+                Soma = 0;
                 cout << "Lista inicializada \n";        
                 cout << "\nPressione ENTER para continuar\n";        
                 getchar();        
@@ -103,7 +106,9 @@
                         nElementos++;        
                         aux = aux->prox;        
                 }        
-                cout << "Quantidade de elementos: " << nElementos << endl;        
+                cout << "Quantidade de elementos: " << nElementos << endl;
+                cout << "\nPressione ENTER para continuar\n";        
+                getchar();
   
         }        
   
@@ -215,65 +220,6 @@
   
         }    
   
-        void Apagador(NO* ValorInicial,int NumExc, bool Tanomeio){    
-            NO* ValorAtual;    
-            NO* Anterior;
-            if(Tanomeio){
-                ValorAtual=ValorInicial->prox;
-                Anterior=ValorInicial;
-            }
-            else{
-                ValorAtual=ValorInicial;
-            }
-            bool PrimeiraVez= true;    
-            bool apagou = false;    
-            while(ValorAtual!=NULL){    
-                if(PrimeiraVez){    
-                    if(ValorAtual->valor==NumExc){
-                        if(Tanomeio==false){
-                            primeiro=ValorAtual->prox;
-                        }
-                        else{
-                            Anterior->prox=ValorAtual->prox;
-                        }
-                        cout<<"\nValor excluido\n";    
-                        quantidade--;    
-                        Soma = Soma - ValorAtual->valor;    
-                        free(ValorAtual);    
-                        apagou= true;    
-                    }    
-                    else{    
-                        if(ValorAtual->prox==NULL){    
-                            cout<<"\nValor nao encontrado\n";    
-                        }    
-                        Anterior=ValorAtual;    
-                    }    
-                    PrimeiraVez=false;    
-                }    
-                else{    
-                    if(ValorAtual->valor==NumExc){    
-                        Anterior->prox=ValorAtual->prox;    
-                        cout<<"\nValor excluido\n";    
-                        quantidade--;    
-                        Soma = Soma - ValorAtual->valor;    
-                        free(ValorAtual);    
-                        apagou=true;    
-                    }    
-                    else{    
-                        Anterior=ValorAtual;    
-                        if(ValorAtual->prox==NULL){    
-                            cout<<"\nValor nao encontrado\n";    
-                        }    
-                    }    
-                }    
-                if(apagou){    
-                    break;    
-                }    
-                ValorAtual=ValorAtual->prox;    
-            }    
-            getchar();    
-        }    
-  
         void excluirElemento(){    
             int NumExc;  
             NO* ValorAtual=primeiro;  
@@ -342,3 +288,63 @@
                   }          
                   return aux;          
         }
+        
+        
+        void Apagador(NO* ValorInicial,int NumExc, bool Tanomeio){    
+            NO* ValorAtual;    
+            NO* Anterior;
+            if(Tanomeio){
+                ValorAtual=ValorInicial->prox;
+                Anterior=ValorInicial;
+            }
+            else{
+                ValorAtual=ValorInicial;
+            }
+            bool PrimeiraVez= true;    
+            bool apagou = false;    
+            while(ValorAtual!=NULL){    
+                if(PrimeiraVez){    
+                    if(ValorAtual->valor==NumExc){
+                        if(Tanomeio==false){
+                            primeiro=ValorAtual->prox;
+                        }
+                        else{
+                            Anterior->prox=ValorAtual->prox;
+                        }
+                        cout<<"\nValor excluido\n";    
+                        quantidade--;    
+                        Soma = Soma - ValorAtual->valor;    
+                        free(ValorAtual);    
+                        apagou= true;    
+                    }    
+                    else{    
+                        if(ValorAtual->prox==NULL){    
+                            cout<<"\nValor nao encontrado\n";    
+                        }    
+                        Anterior=ValorAtual;    
+                    }    
+                    PrimeiraVez=false;    
+                }    
+                else{    
+                    if(ValorAtual->valor==NumExc){    
+                        Anterior->prox=ValorAtual->prox;    
+                        cout<<"\nValor excluido\n";    
+                        quantidade--;    
+                        Soma = Soma - ValorAtual->valor;    
+                        free(ValorAtual);    
+                        apagou=true;    
+                    }    
+                    else{    
+                        Anterior=ValorAtual;    
+                        if(ValorAtual->prox==NULL){    
+                            cout<<"\nValor nao encontrado\n";    
+                        }    
+                    }    
+                }    
+                if(apagou){    
+                    break;    
+                }    
+                ValorAtual=ValorAtual->prox;    
+            }    
+            getchar();    
+        } 
