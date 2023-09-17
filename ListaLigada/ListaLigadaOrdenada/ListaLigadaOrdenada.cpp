@@ -46,91 +46,85 @@ void menu(){
       cout << "3 - Exibir elementos \n";           
       cout << "4 - Buscar elemento \n";           
       cout << "5 - Inserir elemento \n";           
-                           cout << "6 - Excluir elemento \n";           
-                           cout << "7 - Sair \n\n";           
+      cout << "6 - Excluir elemento \n";           
+      cout << "7 - Sair \n\n";           
   
-                           cout << "Opcao: ";           
-                           cin >> op;           
+      cout << "Opcao: ";           
+      cin >> op;           
   
-                           switch (op)           
-                           {           
-                           case 1: inicializar();           
-                                   break;           
-                           case 2: exibirQuantidadeElementos();           
-                                   break;           
-                           case 3: exibirElementos();           
-                                   break;           
-                           case 4: buscarElemento();           
-                                   break;           
-                           case 5: inserirElemento();           
-                                   break;           
-                           case 6: excluirElemento();           
-                                   break;           
-                           case 7:           
-                                   return;     
-                           case 8: MostrarDados();     
-                                   break;     
-                           default:           
-                                   break;           
-                           }           
-                           getchar();           
-                   }           
-           }           
+      switch (op){           
+         case 1: inicializar();           
+                 break;           
+         case 2: exibirQuantidadeElementos();           
+                 break;           
+         case 3: exibirElementos();           
+                 break;           
+         case 4: buscarElemento();           
+                 break;           
+         case 5: inserirElemento();           
+                 break;           
+         case 6: excluirElemento();           
+                 break;           
+         case 7: return;     
+         case 8: MostrarDados();     
+                 break;     
+         default: break;           
+      }           
+      getchar();           
+   }           
+}           
   
   
-           void inicializar()           
-           {           
-                   // se a lista já possuir elementos           
-           // libera a memoria ocupada           
-                   NO* aux = primeiro;           
-                   while (aux != NULL) {           
-                           NO* paraExcluir = aux;           
-                           aux = aux->prox;           
-                           free(paraExcluir);           
-                   }           
+void inicializar(){           
+   // se a lista já possuir elementos           
+   // libera a memoria ocupada           
+   NO* aux = primeiro;           
+   while (aux != NULL) {           
+      NO* paraExcluir = aux;           
+      aux = aux->prox;           
+      free(paraExcluir);           
+   }           
   
-                   primeiro = NULL;   
-                   quantidade = 0;   
-                   Soma = 0;   
-                   cout << "Lista inicializada \n";           
-                   cout << "\nPressione ENTER para continuar\n";           
-                   getchar();           
+   primeiro = NULL;   
+   quantidade = 0;  
+   cout << "Lista inicializada \n";           
+   cout << "\nPressione ENTER para continuar\n";           
+   getchar();           
   
-           }           
+}           
   
-           void exibirQuantidadeElementos() {           
+void exibirQuantidadeElementos() {           
   
-                   int nElementos = 0;           
-                   NO* aux = primeiro;           
-                   while (aux != NULL) {           
-                           nElementos++;           
-                           aux = aux->prox;           
-                   }           
-                   cout << "Quantidade de elementos: " << nElementos << endl;   
-                   cout << "\nPressione ENTER para continuar\n";           
-                   getchar();   
+   int nElementos = 0;           
+   NO* aux = primeiro;           
+   while (aux != NULL) {           
+      nElementos++;           
+      aux = aux->prox;           
+   }           
+   cout << "Quantidade de elementos: " << nElementos << endl;   
+   cout << "\nPressione ENTER para continuar\n";           
+   getchar();   
   
-           }           
+}           
   
-           void exibirElementos()           
-           {           
-                   if (primeiro == NULL) {           
-                           cout << "Lista vazia \n";           
-                           cout << "\nPressione ENTER para continuar\n";           
-                           getchar();           
-                           return;           
-                   }           
-                   else {           
-                           cout << "Elementos: \n";           
-                           NO* aux = primeiro;           
-                           while (aux != NULL) {           
-                                   cout << aux->valor << endl;           
-                                   aux = aux->prox;           
-                           }           
-                           cout << "\nPressione ENTER para continuar\n";           
-                           getchar();           
-                   }           
-           }           
+void exibirElementos(){           
+   if(primeiro == NULL) {           
+      cout << "Lista vazia \n";           
+      cout << "\nPressione ENTER para continuar\n";           
+      getchar();           
+      return;           
+   }           
+   else {           
+      cout << "Elementos: \n";           
+      NO* aux = primeiro;           
+      while (aux != NULL){           
+         cout << aux->valor << endl;           
+         aux = aux->prox;           
+      }           
+      cout << "\nPressione ENTER para continuar\n";           
+      getchar();           
+   }           
+}           
   
            void inserirElemento()           
            {           
