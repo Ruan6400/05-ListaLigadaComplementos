@@ -126,91 +126,87 @@
     }            
  }            
   
-            void inserirElemento()            
-            {            
-                int ValNum;            
-                cout << "Digite o elemento: ";            
-                cin >> ValNum;            
-                bool Inseriu=false;            
-                    // aloca memoria dinamicamente para o novo elemento            
-                if(posicaoElemento(ValNum)==NULL){            
+void inserirElemento(){
+   int ValNum;            
+   cout << "Digite o elemento: ";            
+   cin >> ValNum;            
+   bool Inseriu=false;            
+   // aloca memoria dinamicamente para o novo elemento            
+   if(posicaoElemento(ValNum)==NULL){            
   
-                        NO* novo = (NO*)malloc(sizeof(NO));            
-                        bool PrimeiraVez=true;            
-                        if (novo == NULL)            
-                        {            
-                                return;            
-                        }            
-                        novo->valor=ValNum;            
-                        novo->prox = NULL;            
-                        NO* ValorAtual=primeiro;            
-                        NO* Anterior;         
-                        if(primeiro==NULL){         
-                            primeiro=novo; 
-                            quantidade++;        
-                        }         
-                        else{         
-                            while(ValorAtual!=NULL){         
-                                if(PrimeiraVez){         
-                                    if(novo->valor>ValorAtual->valor){         
-                                        novo->prox=ValorAtual;         
-                                        primeiro=novo;         
-                                        Inseriu=true;         
-                                    }         
-                                    else{         
-                                        if(ValorAtual->prox==NULL){         
-                                            ValorAtual->prox=novo;         
-                                            Inseriu=true;         
-                                        }         
-                                        Anterior=ValorAtual;         
-                                    }         
-                                    PrimeiraVez=false;         
-                                }         
-                                else{         
-                                    if(novo->valor>ValorAtual->valor){         
-                                        Anterior->prox=novo;         
-                                        novo->prox=ValorAtual;         
-                                        Inseriu=true;         
-                                    }         
-                                    else{         
-                                          if(ValorAtual->prox==NULL){         
-                                            ValorAtual->prox=novo;         
-                                            Inseriu=true;         
-                                        }         
-                                    }         
-                                }         
-                                if(Inseriu){         
-                                    break;         
-                                }         
-                                ValorAtual=ValorAtual->prox;         
-                            }         
-                        }         
-                        cout <<"Valor inserido \n";          
-                        quantidade++;
-                        MediaInt = (quantidade - (quantidade % 2))/2;     
-  
-                            ValorAtual=primeiro;     
-                            Anterior=primeiro;     
-                            for(int i=0;i<quantidade+1;i++){   
-                                if(i==MediaInt){   
-                                    MeioDaLista=ValorAtual;
-                                    break;
-                                }   
-                                else{   
-                                    ValorAtual=ValorAtual->prox;   
-                                }   
-                            }    
-  
-                        cout << "\nPressione ENTER para continuar\n";            
-                        getchar();            
-                }            
-                else{            
-                    cout << "Esse valor ja esta na lista";            
-                    cout << "\nPressione ENTER para continuar\n";            
-                    getchar();            
-                }            
-  
-            }        
+      NO* novo = (NO*)malloc(sizeof(NO));            
+      bool PrimeiraVez=true;            
+      if (novo == NULL){            
+          return;            
+      }            
+      novo->valor=ValNum;            
+      novo->prox = NULL;            
+      NO* ValorAtual=primeiro;            
+      NO* Anterior;         
+      if(primeiro==NULL){         
+          primeiro=novo; 
+          quantidade++;        
+      }         
+       else{         
+          while(ValorAtual!=NULL){         
+             if(PrimeiraVez){         
+                if(novo->valor>ValorAtual->valor){         
+                   novo->prox=ValorAtual;         
+                   primeiro=novo;         
+                   Inseriu=true;         
+                }         
+                else{         
+                   if(ValorAtual->prox==NULL){         
+                      ValorAtual->prox=novo;         
+                      Inseriu=true;         
+                   }         
+                   Anterior=ValorAtual;         
+                }         
+                PrimeiraVez=false;         
+             }         
+             else{         
+                if(novo->valor>ValorAtual->valor){         
+                   Anterior->prox=novo;         
+                   novo->prox=ValorAtual;         
+                   Inseriu=true;         
+                }         
+                else{         
+                   if(ValorAtual->prox==NULL){         
+                      ValorAtual->prox=novo;         
+                      Inseriu=true;         
+                   }         
+                }         
+             }         
+             if(Inseriu){         
+                break;         
+             }         
+             ValorAtual=ValorAtual->prox;         
+          }         
+       }         
+       cout <<"Valor inserido \n";          
+       quantidade++;
+       MediaInt = (quantidade - (quantidade % 2))/2;
+       ValorAtual=primeiro;     
+       Anterior=primeiro;     
+       for(int i=0;i<quantidade+1;i++){   
+          if(i==MediaInt){   
+             MeioDaLista=ValorAtual;
+             break;
+          }   
+          else{   
+             ValorAtual=ValorAtual->prox;   
+          }   
+       }
+       cout << "\nPressione ENTER para continuar\n";            
+       getchar();            
+    }            
+    else{            
+       cout << "Esse valor ja esta na lista";            
+       cout << "\nPressione ENTER para continuar\n";            
+       getchar();            
+    }            
+ 
+}        
   
             void excluirElemento(){        
                 int NumExc;      
