@@ -186,8 +186,7 @@ void inserirElemento(){
        cout <<"Valor inserido \n";          
        quantidade++;
        MediaInt = (quantidade - (quantidade % 2))/2;
-       ValorAtual=primeiro;     
-       Anterior=primeiro;     
+       ValorAtual=primeiro;
        for(int i=0;i<quantidade+1;i++){   
           if(i==MediaInt){   
              MeioDaLista=ValorAtual;
@@ -233,8 +232,7 @@ void inserirElemento(){
                         Apagador(primeiro,NumExc,false);        
                     }      
                     MediaInt = (quantidade - (quantidade % 2))/2;
-                    ValorAtual=primeiro;     
-                    Anterior=primeiro;     
+                    ValorAtual=primeiro; 
                     for(int i=0;i<quantidade+1;i++){   
                         if(i==MediaInt){   
                             MeioDaLista=ValorAtual;
