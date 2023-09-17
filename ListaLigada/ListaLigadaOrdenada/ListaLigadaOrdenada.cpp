@@ -1,53 +1,51 @@
 #include <iostream>     
-   #include <cmath>         
-           #include <cstdio>           
-           using namespace std;           
+#include <cmath>         
+#include <cstdio>           
+using namespace std;           
   
-           // definicao de tipo           
-           struct NO {           
-                   int valor;           
-                   NO* prox;           
-           };           
+// definicao de tipo           
+struct NO {           
+   int valor;           
+   NO* prox;           
+};           
+
+NO* primeiro = NULL;           
+NO* MeioDaLista = NULL;        
+int quantidade = 0;        
+int Soma = 0;        
+float Media;      
+int MediaInt;      
   
-           NO* primeiro = NULL;           
-           NO* MeioDaLista = NULL;        
-           int quantidade = 0;        
-           int Soma = 0;        
-           float Media;      
-           int MediaInt;      
-  
-           // headers           
-           void menu();           
-           void inicializar();           
-           void exibirQuantidadeElementos();           
-           void exibirElementos();           
-           void inserirElemento();           
-           void excluirElemento();           
-           void buscarElemento();   
-           void Apagador(NO* ValorInicial,int NumExc, bool Tanomeio);   
-           void MostrarDados();
-           void Procurar(int Num,NO* Inicio,NO* Fim);
-           NO* posicaoElemento(int numero);           
+// headers           
+void menu();           
+void inicializar();           
+void exibirQuantidadeElementos();           
+void exibirElementos();           
+void inserirElemento();           
+void excluirElemento();           
+void buscarElemento();   
+void Apagador(NO* ValorInicial,int NumExc, bool Tanomeio);   
+void MostrarDados();
+void Procurar(int Num,NO* Inicio,NO* Fim);
+NO* posicaoElemento(int numero);           
            //--------------------------           
   
   
-           int main()           
-           {           
-                   menu();           
-           }           
+int main(){           
+  menu();           
+}           
   
-           void menu()           
-           {           
-                   int op = 0;           
-                   while (op != 7) {           
-                           system("clear"); // somente no windows           
-                           cout << "Menu Lista Ligada";           
-                           cout << endl << endl;           
-                           cout << "1 - Inicializar Lista \n";           
-                           cout << "2 - Exibir quantidade de elementos \n";           
-                           cout << "3 - Exibir elementos \n";           
-                           cout << "4 - Buscar elemento \n";           
-                           cout << "5 - Inserir elemento \n";           
+void menu(){           
+   int op = 0;           
+   while (op != 7) {           
+      system("clear"); // somente no windows           
+      cout << "Menu Lista Ligada";           
+      cout << endl << endl;           
+      cout << "1 - Inicializar Lista \n";           
+      cout << "2 - Exibir quantidade de elementos \n";           
+      cout << "3 - Exibir elementos \n";           
+      cout << "4 - Buscar elemento \n";           
+      cout << "5 - Inserir elemento \n";           
                            cout << "6 - Excluir elemento \n";           
                            cout << "7 - Sair \n\n";           
   
@@ -154,7 +152,8 @@
                        NO* ValorAtual=primeiro;           
                        NO* Anterior;        
                        if(primeiro==NULL){        
-                           primeiro=novo;        
+                           primeiro=novo;
+                           quantidade++;       
                        }        
                        else{        
                            while(ValorAtual!=NULL){        
