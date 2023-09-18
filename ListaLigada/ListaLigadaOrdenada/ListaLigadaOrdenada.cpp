@@ -163,39 +163,20 @@
            primeiro=novo;
        }          
         else{          
-           while(ValorAtual!=Final){          
-              if(PrimeiraVez){          
-                 if(novo->valor>ValorAtual->valor){          
-                    novo->prox=ValorAtual;          
-                    primeiro=novo;          
-                    Inseriu=true;          
-                 }          
-                 else{          
-                    if(ValorAtual->prox==Final){          
-                       ValorAtual->prox=novo;          
-                       Inseriu=true;          
-                    }          
-                    Anterior=ValorAtual;          
-                 }          
-                 PrimeiraVez=false;          
-              }          
-              else{          
-                 if(novo->valor>ValorAtual->valor){          
-                    Anterior->prox=novo;          
-                    novo->prox=ValorAtual;          
-                    Inseriu=true;          
-                 }          
-                 else{          
-                    if(ValorAtual->prox==Final){          
-                       ValorAtual->prox=novo;          
-                       Inseriu=true;          
-                    }          
-                 }          
-              }          
-              if(Inseriu){          
-                 break;          
-              }          
-              ValorAtual=ValorAtual->prox;          
+           while(ValorAtual!=Final){
+               if(novo->valor>ValorAtual->valor){
+                   novo->prox=ValorAtual;
+                   primeiro=novo;
+                   break;
+               }
+               else{
+                   if(ValorAtual->prox==Final||novo->valor>ValorAtual->prox->valor){
+                       novo->prox=ValorAtual->prox;
+                       ValorAtual->prox=novo;
+                       break;
+                   }
+                   ValorAtual=ValorAtual->prox;
+               }
            }          
         }          
         cout <<"Valor inserido \n";           
