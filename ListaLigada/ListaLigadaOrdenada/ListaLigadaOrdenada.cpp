@@ -310,59 +310,44 @@
   
              void Apagador(NO* ValorInicial,int NumExc, bool Tanomeio){         
                  NO* ValorAtual;         
-                 NO* Anterior;     
+                 NO* Anterior;
+                 NO* Fim;
                  if(Tanomeio){     
                      ValorAtual=ValorInicial->prox;     
-                     Anterior=ValorInicial;     
+                     Anterior=ValorInicial;
+                     Fim=NULL;
                  }     
                  else{     
-                     ValorAtual=ValorInicial;     
-                 }     
-                 bool PrimeiraVez= true;         
+                     ValorAtual=ValorInicial;
+                     Fim=MeioDaLista;
+                 }
                  bool apagou = false;         
-                 while(ValorAtual!=NULL){         
-                     if(PrimeiraVez){         
-                         if(ValorAtual->valor==NumExc){     
-                             if(Tanomeio==false){     
-                                 primeiro=ValorAtual->prox;     
-                             }     
-                             else{     
-                                 Anterior->prox=ValorAtual->prox;     
-                             }     
-                             cout<<"\nValor excluido\n";         
-                             quantidade--;         
-                             Soma = Soma - ValorAtual->valor;         
-                             free(ValorAtual);         
-                             apagou= true;         
-                         }         
-                         else{         
-                             if(ValorAtual->prox==NULL){         
-                                 cout<<"\nValor nao encontrado\n";         
-                             }         
-                             Anterior=ValorAtual;         
-                         }         
-                         PrimeiraVez=false;         
-                     }         
-                     else{         
-                         if(ValorAtual->valor==NumExc){         
-                             Anterior->prox=ValorAtual->prox;         
-                             cout<<"\nValor excluido\n";         
-                             quantidade--;         
-                             Soma = Soma - ValorAtual->valor;         
-                             free(ValorAtual);         
-                             apagou=true;         
-                         }         
-                         else{         
-                             Anterior=ValorAtual;         
-                             if(ValorAtual->prox==NULL){         
-                                 cout<<"\nValor nao encontrado\n";         
-                             }         
-                         }         
-                     }         
-                     if(apagou){         
-                         break;         
-                     }         
-                     ValorAtual=ValorAtual->prox;         
+                 while(ValorAtual!=Fim){
+                     if(ValorAtual->valor==NumExc){
+                         if(ValorAtual->valor==primeiro->valor){
+                           primeiro=ValorAtual->prox;
+                           free(ValorAtual);
+                           cout<<"\nValor Excluido.\n";
+                           apagou=true;
+                         }
+                         else{
+                           Anterior->prox=ValorAtual->prox;
+                           free(ValorAtual);
+                           cout<<"\nValor Excluido.\n";
+                           apagou=true;
+                         }
+                         quantidade--;
+                     }
+                     else{
+                         if(ValorAtual->prox==Fim){
+                             cout<<"\nValor nao encontrado.\n";
+                         }
+                         Anterior=ValorAtual;
+                         ValorAtual=ValorAtual->prox;
+                     }
+                     if(apagou){
+                         break;
+                     }
                  }         
                  getchar();         
              }
