@@ -14,7 +14,8 @@ NO* MeioDaLista = NULL;
 int quantidade = 0;          
 int Soma = 0;          
 float Media;        
-int MediaInt;        
+int MediaInt;
+bool Naotem;
   
 // headers             
 void menu();             
@@ -131,7 +132,7 @@ void inserirElemento(){
     cout << "Digite o elemento: ";             
     cin >> ValNum;             
     bool Inseriu=false;             
-    // aloca memoria dinamicamente para o novo elemento             
+    // aloca memoria dinamicamente para o novo elemento
     if(posicaoElemento(ValNum)==NULL){             
         NO* novo = (NO*)malloc(sizeof(NO));             
         bool PrimeiraVez=true;             
@@ -303,7 +304,24 @@ void Procurar(int Num,NO* Inicio,NO* Fim){
         Inicio=Inicio->prox;  
     }  
     getchar();  
-}  
+}
+
+bool Verifica(int Num,NO* Inicio,NO* Fim){  
+    while(Inicio!=Fim){  
+        if(Inicio->valor==Num){
+            return false;
+            break;  
+        }  
+        else{  
+            if(Inicio->prox==Fim){
+              return true;
+                break;  
+            }  
+        }  
+        Inicio=Inicio->prox;  
+    }  
+    getchar();  
+}
   
 void Apagador(NO* ValorInicial,int NumExc, bool Tanomeio){         
     NO* ValorAtual;         
