@@ -321,21 +321,17 @@
                      ValorAtual=ValorInicial;
                      Fim=MeioDaLista;
                  }
-                 bool apagou = false;         
                  while(ValorAtual!=Fim){
                      if(ValorAtual->valor==NumExc){
                          if(ValorAtual->valor==primeiro->valor){
                            primeiro=ValorAtual->prox;
-                           free(ValorAtual);
-                           cout<<"\nValor Excluido.\n";
-                           apagou=true;
                          }
                          else{
                            Anterior->prox=ValorAtual->prox;
-                           free(ValorAtual);
-                           cout<<"\nValor Excluido.\n";
-                           apagou=true;
                          }
+                         free(ValorAtual);
+                         cout<<"\nValor Excluido.\n";
+                         break;
                          quantidade--;
                      }
                      else{
@@ -344,9 +340,6 @@
                          }
                          Anterior=ValorAtual;
                          ValorAtual=ValorAtual->prox;
-                     }
-                     if(apagou){
-                         break;
                      }
                  }         
                  getchar();         
