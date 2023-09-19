@@ -28,7 +28,7 @@ void buscarElemento();
 void Apagador(NO* ValorInicial,int NumExc, bool Tanomeio);     
 void MostrarDados();  
 void Procurar(int Num,NO* Inicio,NO* Fim);  
-NO* posicaoElemento(int numero);             
+bool Verifica(int Num,NO* Inicio,NO* Fim);
 //--------------------------             
   
   
@@ -131,9 +131,25 @@ void inserirElemento(){
     int ValNum;             
     cout << "Digite o elemento: ";             
     cin >> ValNum;             
-    bool Inseriu=false;             
+    bool Inseriu=false;
+    if(quantidade>=5){
+        if(ValNum<MeioDaLista->valor){
+            Naotem=Verifica(ValNum,MeioDaLista,NULL);
+        }
+        else{
+            Naotem=Verifica(ValNum,primeiro,MeioDaLista);
+        }
+    }
+    else{
+        if(quantidade!=0){
+            Naotem=Verifica(ValNum,primeiro,NULL);
+        }
+        else{
+            Naotem=true;
+        }
+    }
     // aloca memoria dinamicamente para o novo elemento
-    if(posicaoElemento(ValNum)==NULL){             
+    if(Naotem){             
         NO* novo = (NO*)malloc(sizeof(NO));             
         bool PrimeiraVez=true;             
         if (novo == NULL){             
@@ -277,18 +293,6 @@ void MostrarDados(){
     }       
     getchar();       
 }       
-  
-NO* posicaoElemento(int numero/*,NO* ValorInicial*/)  {               
-    NO* aux = primeiro; //mudar valor de aux para o argumento               
-    while (aux != NULL) {               
-        if (aux->valor == numero){               
-            break;               
-        }               
-        aux = aux->prox;               
-    }               
-    return aux;               
-}  
-  
 void Procurar(int Num,NO* Inicio,NO* Fim){  
     while(Inicio!=Fim){  
         if(Inicio->valor==Num){  
@@ -305,7 +309,6 @@ void Procurar(int Num,NO* Inicio,NO* Fim){
     }  
     getchar();  
 }
-
 bool Verifica(int Num,NO* Inicio,NO* Fim){  
     while(Inicio!=Fim){  
         if(Inicio->valor==Num){
@@ -314,13 +317,12 @@ bool Verifica(int Num,NO* Inicio,NO* Fim){
         }  
         else{  
             if(Inicio->prox==Fim){
-              return true;
+                return true;
                 break;  
             }  
         }  
         Inicio=Inicio->prox;  
     }  
-    getchar();  
 }
   
 void Apagador(NO* ValorInicial,int NumExc, bool Tanomeio){         
