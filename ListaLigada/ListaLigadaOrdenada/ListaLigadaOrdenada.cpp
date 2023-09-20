@@ -128,25 +128,29 @@ void exibirElementos(){
   }             
   
 void inserirElemento(){ 
-    int ValNum;             
+    int ValNum;
+    NO* ValorAtual;             
+    NO* Anterior;
+    NO* Final;
     cout << "Digite o elemento: ";             
     cin >> ValNum;             
     bool Inseriu=false;
     if(quantidade>=5){
         if(ValNum<MeioDaLista->valor){
             Naotem=Verifica(ValNum,MeioDaLista,NULL);
+            ValorAtual=MeioDaLista;
+            Final=NULL;
         }
         else{
             Naotem=Verifica(ValNum,primeiro,MeioDaLista);
+            ValorAtual=primeiro;
+            Final=MeioDaLista->prox;
         }
     }
     else{
-        if(quantidade!=0){
-            Naotem=Verifica(ValNum,primeiro,NULL);
-        }
-        else{
-            Naotem=true;
-        }
+        Naotem=Verifica(ValNum,primeiro,NULL);
+        ValorAtual=primeiro;
+        Final=NULL;
     }
     // aloca memoria dinamicamente para o novo elemento
     if(Naotem){             
@@ -157,24 +161,6 @@ void inserirElemento(){
         }             
         novo->valor=ValNum;             
         novo->prox = NULL;             
-        NO* ValorAtual;             
-        NO* Anterior;
-        NO* Final;
-        if(quantidade>=5){
-            if(novo->valor<MeioDaLista->valor){
-                ValorAtual=MeioDaLista;
-                Final=NULL;
-            }
-            else{
-                ValorAtual=primeiro;
-                Final=MeioDaLista->prox;
-            }
-        }
-        else{
-            ValorAtual=primeiro;
-            Final=NULL;
-        }
-       
         if(primeiro==NULL){          
             primeiro=novo;
         }          
@@ -322,7 +308,8 @@ bool Verifica(int Num,NO* Inicio,NO* Fim){
             }  
         }  
         Inicio=Inicio->prox;  
-    }  
+    }
+    return true;
 }
   
 void Apagador(NO* ValorInicial,int NumExc, bool Tanomeio){         
