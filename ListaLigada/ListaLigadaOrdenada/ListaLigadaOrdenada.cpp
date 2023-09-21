@@ -11,7 +11,7 @@ struct NO {
   
 NO* primeiro = NULL;             
 NO* MeioDaLista = NULL;          
-int quantidade = 0;          
+float quantidade = 0;          
 int Soma = 0;          
 float Media;        
 int MediaInt;
@@ -87,7 +87,8 @@ void inicializar(){
     }             
   
     primeiro = NULL;     
-    quantidade = 0;    
+    quantidade = 0;
+    MeioDaLista = NULL;
     cout << "Lista inicializada \n";             
     cout << "\nPressione ENTER para continuar\n";             
     getchar();             
@@ -182,18 +183,14 @@ void inserirElemento(){
             }          
         }          
         cout <<"Valor inserido \n";           
-        quantidade++; 
-        MediaInt = (quantidade - (quantidade % 2))/2; 
+        quantidade++;
+        Media = quantidade/2;
+        MediaInt = round(Media) - 1;
         ValorAtual=primeiro; 
-        for(int i=0;i<quantidade+1;i++){    
-            if(i==MediaInt){    
-                MeioDaLista=ValorAtual; 
-                break; 
-            }    
-            else{    
-                ValorAtual=ValorAtual->prox;    
-            }    
-        } 
+        for(int i=0;i<MediaInt;i++){
+           ValorAtual = ValorAtual->prox;
+        }
+        MeioDaLista = ValorAtual;
         cout << "\nPressione ENTER para continuar\n";             
         getchar();             
     }             
@@ -228,18 +225,14 @@ void excluirElemento(){
         }         
         else{         
             Apagador(primeiro,NumExc,false);         
-        }       
-            MediaInt = (quantidade - (quantidade % 2))/2; 
-            ValorAtual=primeiro;  
-            for(int i=0;i<quantidade+1;i++){    
-                if(i==MediaInt){    
-                    MeioDaLista=ValorAtual; 
-                    break; 
-                }    
-                else{    
-                    ValorAtual=ValorAtual->prox;    
-                }    
-            }     
+        }
+        Media = quantidade/2;
+        MediaInt = round(Media) - 1;
+        ValorAtual=primeiro;  
+        for(int i=0;i<MediaInt;i++){
+            ValorAtual = ValorAtual->prox;
+        }
+        MeioDaLista=ValorAtual;
     }         
 }         
   
@@ -270,7 +263,7 @@ void buscarElemento(){
   
 void MostrarDados(){       
     cout<<"MediaInt: "<<MediaInt<<endl;       
-    cout<<"quant: "<<quantidade<<endl;       
+    cout<<"quantidade: "<<quantidade<<endl;       
     if(MeioDaLista==NULL){       
         cout<<"a variavel esta nula";       
     }       
@@ -335,8 +328,8 @@ void Apagador(NO* ValorInicial,int NumExc, bool Tanomeio){
             }
             free(ValorAtual);
             cout<<"\nValor Excluido.\n";
-            break;
             quantidade--;
+            break;
         }
         else{
             if(ValorAtual->prox==Fim){
